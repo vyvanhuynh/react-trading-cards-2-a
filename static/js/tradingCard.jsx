@@ -67,6 +67,11 @@ function TradingCardContainer() {
     imgUrl: '/static/img/float.jpg'
   };
   const [cards, setCards] = React.useState([floatCard]);
+  React.useEffect(() => {
+    fetch('/cards.json')
+    .then((response) => response.json())
+    .then((data) => setCards(data.cards))
+  },[])
 
   for (const currentCard of cards) {
     tradingCards.push(
